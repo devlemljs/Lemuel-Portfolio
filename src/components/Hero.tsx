@@ -65,10 +65,11 @@ export function Hero() {
         <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(#64748b 1.1px, transparent 1.1px)', backgroundSize: '12px 12px', backgroundPosition: 'left center' }} />
       </div>
 
-      {/* Profile Image Background - Sits above cobweb (z-10 on mobile), behind text (z-20), with no dark shadow on mobile */}
-      <div className="absolute right-0 top-0 md:top-1/2 md:-translate-y-1/2 w-[85%] md:w-[50%] h-[75%] sm:h-[80%] md:h-[95%] z-10 md:z-0 opacity-60 sm:opacity-75 md:opacity-100 pointer-events-none flex items-end justify-end md:pr-12 shadow-none drop-shadow-none filter-none">
+      {/* Profile Image Background - Sits above cobweb (z-10 on mobile), behind text (z-20) */}
+      <div className="absolute right-0 top-0 md:top-1/2 md:-translate-y-1/2 w-[85%] md:w-[50%] h-[75%] sm:h-[80%] md:h-[95%] z-10 md:z-0 opacity-60 sm:opacity-75 md:opacity-100 pointer-events-none flex items-end justify-end md:pr-12">
         <div 
-          className="w-full h-full relative shadow-none drop-shadow-none md:[mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] md:[WebkitMaskImage:linear-gradient(to_bottom,black_80%,transparent_100%)]"
+          className="w-full h-full relative"
+          style={{ maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }}
         >
           {/* Replace this img src with your transparent profile image */}
           <img 
@@ -79,7 +80,7 @@ export function Hero() {
             width="600"
             height="800"
             onLoad={() => setImageLoaded(true)}
-            className={`w-full h-full object-contain object-bottom md:object-right transition-opacity duration-500 ease-out shadow-none drop-shadow-none filter-none ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            className={`w-full h-full object-contain object-bottom md:object-right transition-opacity duration-500 ease-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             referrerPolicy="no-referrer"
           />
         </div>

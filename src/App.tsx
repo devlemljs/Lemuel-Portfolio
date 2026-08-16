@@ -237,7 +237,7 @@ function MainApp() {
           title="Lem Suico"
         >
           <span className="text-base font-bold tracking-tight text-slate-900 dark:text-white transition-colors duration-300">
-            Lem Suico
+            Lemuel Jan Suico
           </span>
         </div>
         <button 
