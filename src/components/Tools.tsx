@@ -144,9 +144,9 @@ export function Tools() {
       
       <div className="max-w-6xl mx-auto px-6 mt-12">
         <div className="flex flex-wrap justify-center gap-6 sm:gap-12 opacity-80">
-          <span className="font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Coding Languages</span>
-          <span className="font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Coding Tools</span>
-          <span className="font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Communication & Admin Tools</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Programming Languages</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Development & Design</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Business & Productivity</span>
         </div>
       </div>
     </section>
