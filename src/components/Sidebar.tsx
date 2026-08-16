@@ -30,8 +30,8 @@ const SOCIAL_LINKS = [
   { icon: Github, href: 'https://github.com/devlemljs', label: 'GitHub' },
 ];
 
-const profile = '/images/profile.webp';
-const cover = '/images/spidyweb.webp';
+const profile = 'public/images/profile.webp';
+const cover = 'public/images/spidyweb.webp';
 
 export function Sidebar({ activeSection, isOpen, onClose, onNavigate }: SidebarProps) {
   return (
@@ -117,13 +117,13 @@ export function Sidebar({ activeSection, isOpen, onClose, onNavigate }: SidebarP
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 flex flex-col justify-start gap-2 overflow-y-auto h-[235px] -mt-[14px] mb-[5px] pb-[5px]">
+          <nav className="flex-1 flex flex-col justify-center gap-1.5 sm:gap-2 md:gap-2 overflow-y-auto min-h-0 my-auto py-1 md:my-0 md:py-0 md:justify-start md:h-[235px] md:-mt-[14px] md:mb-[5px] md:pb-[5px]">
             {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => onNavigate(id)}
                 className={cn(
-                  "flex items-center gap-3 px-4 py-2.5 rounded-md text-sm font-medium transition-all duration-300 text-left w-full relative overflow-hidden group cursor-pointer",
+                  "flex items-center gap-3 px-4 py-2 sm:py-2.5 md:py-2.5 rounded-md text-sm font-medium transition-all duration-300 text-left w-full relative overflow-hidden group cursor-pointer",
                   activeSection === id
                     ? "text-black dark:text-white bg-slate-100/50 dark:bg-slate-800/30"
                     : "text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40"

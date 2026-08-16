@@ -250,17 +250,17 @@ export function Contact() {
       {/* Privacy Policy Modal */}
       <AnimatePresence>
         {showPrivacyModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-slate-950/70 backdrop-blur-sm overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ duration: 0.2 }}
-              className="bg-white dark:bg-black rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-900 max-w-lg w-full p-6 sm:p-7 relative overflow-hidden max-h-[90vh] flex flex-col"
+              className="bg-white dark:bg-black rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-900 max-w-lg w-full p-5 sm:p-6 md:p-7 relative overflow-hidden max-h-[85vh] flex flex-col my-auto"
             >
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-900 mb-4">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-900 mb-4 shrink-0">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white text-black dark:text-black flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white text-black dark:text-black flex items-center justify-center shrink-0">
                     <Shield className="w-5 h-5" />
                   </div>
                   <div>
@@ -270,7 +270,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed overflow-y-auto pr-1">
+              <div className="space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed overflow-y-auto pr-1 flex-1">
                 <div>
                   <h4 className="font-semibold text-slate-900 dark:text-white mb-1">1. Information I Collect</h4>
                   <p>
@@ -300,7 +300,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+              <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end shrink-0">
                 <button
                   onClick={() => setShowPrivacyModal(false)}
                   className="px-4 py-2 rounded-xl bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-slate-200 text-white dark:text-slate-900 text-xs font-semibold transition-colors cursor-pointer"

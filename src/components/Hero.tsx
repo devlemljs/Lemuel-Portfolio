@@ -66,14 +66,14 @@ export function Hero() {
       </div>
 
       {/* Profile Image Background - Sits behind text */}
-      <div className="absolute right-0 top-0 md:top-1/2 md:-translate-y-1/2 w-[85%] md:w-[50%] h-[75%] sm:h-[80%] md:h-[95%] z-0 opacity-15 sm:opacity-20 md:opacity-100 pointer-events-none flex items-end justify-end md:pr-12">
+      <div className="absolute right-0 top-0 md:top-1/2 md:-translate-y-1/2 w-[85%] md:w-[50%] h-[75%] sm:h-[80%] md:h-[95%] z-0 opacity-40 sm:opacity-50 md:opacity-100 pointer-events-none flex items-end justify-end md:pr-12">
         <div 
           className="w-full h-full relative" 
           style={{ maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }}
         >
           {/* Replace this img src with your transparent profile image */}
           <img 
-            src= {profile} 
+            src= {profile}
             alt="Lemuel Jan Suico - Business Intelligence Specialist and Web Developer" 
             loading="eager"
             decoding="async"
@@ -99,7 +99,7 @@ export function Hero() {
               pointerTracking={true}
               autoOrbit={true}
               orbitSpeed={0.3}
-              fontSize="clamp(1.65rem, 6.2vw, 4.8rem)"
+              fontSize="clamp(2.45rem, 8.5vw, 4.8rem)"
               fontWeight={900}
               shadow={true}
             />
