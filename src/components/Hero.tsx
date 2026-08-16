@@ -49,7 +49,7 @@ export function Hero() {
 
   return (
     <section id="home" className="min-h-[80vh] sm:min-h-[84vh] md:min-h-screen relative flex items-center py-16 sm:py-20 md:py-0 bg-white dark:bg-black transition-colors duration-300 overflow-hidden">
-      {/* Spider-Man Cobweb - Upper Right */}
+      {/* Spider-Man Cobweb - Upper Right (Behind profile on mobile) */}
       <div className="absolute top-0 right-0 w-72 h-72 sm:w-88 sm:h-88 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] pointer-events-none opacity-30 dark:opacity-20 z-0 text-slate-400 dark:text-slate-300">
         <CobwebPattern corner="top-right" />
       </div>
@@ -65,22 +65,21 @@ export function Hero() {
         <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(#64748b 1.1px, transparent 1.1px)', backgroundSize: '12px 12px', backgroundPosition: 'left center' }} />
       </div>
 
-      {/* Profile Image Background - Sits above cobweb (z-10 on mobile) and behind text (z-20 / z-30) */}
-      <div className="absolute right-0 top-0 md:top-1/2 md:-translate-y-1/2 w-[85%] md:w-[50%] h-[75%] sm:h-[80%] md:h-[95%] z-10 md:z-0 opacity-40 sm:opacity-50 md:opacity-100 pointer-events-none flex items-end justify-end md:pr-12">
+      {/* Profile Image Background - Sits above cobweb (z-10 on mobile), behind text (z-20), with no dark shadow on mobile */}
+      <div className="absolute right-0 top-0 md:top-1/2 md:-translate-y-1/2 w-[85%] md:w-[50%] h-[75%] sm:h-[80%] md:h-[95%] z-10 md:z-0 opacity-60 sm:opacity-75 md:opacity-100 pointer-events-none flex items-end justify-end md:pr-12 shadow-none drop-shadow-none filter-none">
         <div 
-          className="w-full h-full relative" 
-          style={{ maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }}
+          className="w-full h-full relative shadow-none drop-shadow-none md:[mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] md:[WebkitMaskImage:linear-gradient(to_bottom,black_80%,transparent_100%)]"
         >
           {/* Replace this img src with your transparent profile image */}
           <img 
-            src= {profile} 
+            src= {profile}
             alt="Lemuel Jan Suico - Business Intelligence Specialist and Web Developer" 
             loading="eager"
             decoding="async"
             width="600"
             height="800"
             onLoad={() => setImageLoaded(true)}
-            className={`w-full h-full object-contain object-bottom md:object-right transition-opacity duration-500 ease-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            className={`w-full h-full object-contain object-bottom md:object-right transition-opacity duration-500 ease-out shadow-none drop-shadow-none filter-none ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             referrerPolicy="no-referrer"
           />
         </div>
