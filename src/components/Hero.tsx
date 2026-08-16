@@ -65,15 +65,15 @@ export function Hero() {
         <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(#64748b 1.1px, transparent 1.1px)', backgroundSize: '12px 12px', backgroundPosition: 'left center' }} />
       </div>
 
-      {/* Profile Image Background - Sits behind text */}
-      <div className="absolute right-0 top-0 md:top-1/2 md:-translate-y-1/2 w-[85%] md:w-[50%] h-[75%] sm:h-[80%] md:h-[95%] z-0 opacity-40 sm:opacity-50 md:opacity-100 pointer-events-none flex items-end justify-end md:pr-12">
+      {/* Profile Image Background - Sits above cobweb (z-10 on mobile) and behind text (z-20 / z-30) */}
+      <div className="absolute right-0 top-0 md:top-1/2 md:-translate-y-1/2 w-[85%] md:w-[50%] h-[75%] sm:h-[80%] md:h-[95%] z-10 md:z-0 opacity-40 sm:opacity-50 md:opacity-100 pointer-events-none flex items-end justify-end md:pr-12">
         <div 
           className="w-full h-full relative" 
           style={{ maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }}
         >
           {/* Replace this img src with your transparent profile image */}
           <img 
-            src= {profile}
+            src= {profile} 
             alt="Lemuel Jan Suico - Business Intelligence Specialist and Web Developer" 
             loading="eager"
             decoding="async"
@@ -86,8 +86,8 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-10 py-6 sm:py-8 md:py-0">
-        <div className="max-w-4xl relative z-20 mt-4 sm:mt-6 md:mt-0">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-20 md:z-10 py-6 sm:py-8 md:py-0">
+        <div className="max-w-4xl relative z-30 md:z-20 mt-10 sm:mt-12 md:mt-0">
           <div className="mb-4 sm:mb-6 py-1 sm:py-2">
             <DepthText
               text="Lemuel Jan Suico"

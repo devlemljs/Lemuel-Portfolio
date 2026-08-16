@@ -30,8 +30,8 @@ const SOCIAL_LINKS = [
   { icon: Github, href: 'https://github.com/devlemljs', label: 'GitHub' },
 ];
 
-const profile = 'public/images/profile.webp';
-const cover = 'public/images/spidyweb.webp';
+const profile = '/images/profile.webp';
+const cover = '/images/spidyweb.webp';
 
 export function Sidebar({ activeSection, isOpen, onClose, onNavigate }: SidebarProps) {
   return (
@@ -108,16 +108,16 @@ export function Sidebar({ activeSection, isOpen, onClose, onNavigate }: SidebarP
           </div>
 
           {/* Profile Info */}
-            <div className="mb-6 shrink-0">
+          <div className="mb-4 sm:mb-6 shrink-0">
             <h1 className="text-lg font-semibold text-slate-900 dark:text-white mb-1 leading-tight transition-colors duration-300">Lemuel Jan Suico</h1>
             <p className="text-xs text-slate-900 dark:text-slate-300 font-medium mb-1.5 leading-snug transition-colors duration-300">
               Business Intelligence | Web Development | AI Specialist
             </p>
-            <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 transition-colors duration-300">Pasig City, Philippines</p>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 sm:mb-4 transition-colors duration-300">Pasig City, Philippines</p>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 flex flex-col justify-center gap-1.5 sm:gap-2 md:gap-2 overflow-y-auto min-h-0 my-auto py-1 md:my-0 md:py-0 md:justify-start md:h-[235px] md:-mt-[14px] md:mb-[5px] md:pb-[5px]">
+          <nav className="flex-1 flex flex-col justify-center gap-2.5 sm:gap-3 md:gap-2 overflow-y-auto min-h-0 my-auto py-1 md:my-0 md:py-0 md:justify-start md:h-[235px] md:-mt-[14px] md:mb-[5px] md:pb-[5px]">
             {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
