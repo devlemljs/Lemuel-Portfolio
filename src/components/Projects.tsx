@@ -1,32 +1,82 @@
 import { CobwebPattern } from './CobwebPattern';
 
-const lemuel = '/projects/lemuel.webp';
-const data = '/projects/data.webp';
-const internship = '/projects/internship.webp';
-const graphics = '/projects/graphics.webp';
-const daniela = '/projects/daniela.webp';
-const gio = '/projects/gio.webp';
-const swingbase = '/projects/swingbase.webp';
+export const lemuel = '/projects/lemuel.webp';
+export const data = '/projects/data.webp';
+export const internship = '/projects/internship.webp';
+export const graphics = '/projects/graphics.webp';
+export const daniela = '/projects/daniela.webp';
+export const gio = '/projects/gio.webp';
+export const swingbase = '/projects/swingbase.webp';
 
-export const GRAPHICS_POSTERS = [
-  { id: 1, title: "Canva Design Concept #1", category: "Visual Brainstorm" },
-  { id: 2, title: "Brand Identity Draft", category: "Moodboard & Assets" },
-  { id: 3, title: "Typography & Palette", category: "Canva Layout" },
-  { id: 4, title: "Marketing Creative", category: "Visual Hierarchy" },
-  { id: 5, title: "Product Campaign", category: "Canva Design" },
-  { id: 6, title: "Social Graphic Concept", category: "Creative Composition" },
-  { id: 7, title: "Brand Asset Design", category: "Color & Styling" },
-  { id: 8, title: "Editorial Layout Draft", category: "Canva Workspace" },
-  { id: 9, title: "Creative Showcase", category: "Final Concept" },
+export const projectDetail1 = '/projectdetails/1.webp';
+export const projectDetail2 = '/projectdetails/2.webp';
+export const projectDetail3 = '/projectdetails/3.webp';
+export const projectDetail4 = '/projectdetails/4.webp';
+export const projectDetail5 = '/projectdetails/5.webp';
+export const projectDetail6 = '/projectdetails/6.webp';
+export const projectDetail7 = '/projectdetails/7.webp';
+export const projectDetail8 = '/projectdetails/8.webp';
+export const projectDetail9 = '/projectdetails/9.webp';
+export const projectDetail10 = '/projectdetails/10.webp';
+export const analyticsDetail = '/projectdetails/analytics.webp';
+export const internshipDetail1 = '/projectdetails/internship1.webp';
+export const internshipDetail2 = '/projectdetails/internship2.webp';
+export const danielaDetail = '/projectdetails/port dan.webp';
+export const gioDetail = '/projectdetails/port gio.webp';
+export const lemuelDetail = '/projectdetails/port lem.webp';
+export const swingbaseDetail = '/projectdetails/swingbase.webp';
+
+export interface PosterItem {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+}
+
+export interface ProjectItem {
+  id: number;
+  title: string;
+  hook: string;
+  fullDetails: string;
+  link?: string;
+  image: string;
+  detailImage?: string;
+  phonePreviews?: string[];
+  gallery?: string[];
+}
+
+export const GRAPHICS_POSTERS: PosterItem[] = [
+  { id: 1, title: "Canva Design Concept #1", category: "Visual Brainstorm", image: projectDetail1 },
+  { id: 2, title: "Brand Identity Draft", category: "Moodboard & Assets", image: projectDetail2 },
+  { id: 3, title: "Typography & Palette", category: "Canva Layout", image: projectDetail3 },
+  { id: 4, title: "Marketing Creative", category: "Visual Hierarchy", image: projectDetail4 },
+  { id: 5, title: "Product Campaign", category: "Canva Design", image: projectDetail5 },
+  { id: 6, title: "Social Graphic Concept", category: "Creative Composition", image: projectDetail6 },
+  { id: 7, title: "Brand Asset Design", category: "Color & Styling", image: projectDetail7 },
+  { id: 8, title: "Editorial Layout Draft", category: "Canva Workspace", image: projectDetail8 },
+  { id: 9, title: "Creative Showcase", category: "Final Concept", image: projectDetail9 },
+  { id: 10, title: "Brand Campaign Concept", category: "Final Presentation", image: projectDetail10 },
 ];
 
-export const PROJECTS = [
+export const PROJECTS: ProjectItem[] = [
   {
     title: "Graphics Design",
     hook: "Creative graphic design concepts and visual branding created in Canva.",
     fullDetails: "A creative collection of graphic design concepts, visual branding moodboards, and promotional layouts created using Canva. This project showcases the complete design process from preliminary brainstorming and color harmony exploration to refined social media graphics and marketing assets.",
     id: 4,
     image: graphics,
+    gallery: [
+      projectDetail1,
+      projectDetail2,
+      projectDetail3,
+      projectDetail4,
+      projectDetail5,
+      projectDetail6,
+      projectDetail7,
+      projectDetail8,
+      projectDetail9,
+      projectDetail10,
+    ],
   },
   {
     title: "Internshipfy",
@@ -35,6 +85,7 @@ export const PROJECTS = [
     link: "https://internshipfyy.vercel.app",
     id: 3,
     image: internship,
+    phonePreviews: [internshipDetail1, internshipDetail2],
   },
   {
     title: "Portfolio Website",
@@ -43,6 +94,7 @@ export const PROJECTS = [
     link: "https://daniela-lacuarin.vercel.app",
     id: 5,
     image: daniela,
+    detailImage: danielaDetail,
   },
   {
     title: "Data Analysis",
@@ -51,6 +103,7 @@ export const PROJECTS = [
     link: "files/Lemuel Data Analysis.pdf", 
     id: 2,
     image: data,
+    detailImage: analyticsDetail,
   },
   {
     title: "SwingBase",
@@ -59,6 +112,7 @@ export const PROJECTS = [
     link: "https://swingbase.vercel.app",
     id: 7,
     image: swingbase,
+    detailImage: swingbaseDetail,
   },
   {
     title: "Portfolio Website",
@@ -67,6 +121,7 @@ export const PROJECTS = [
     link: "https://giosabucido.vercel.app",
     id: 6,
     image: gio,
+    detailImage: gioDetail,
   },
   {
     title: "First Portfolio Website",
@@ -75,6 +130,7 @@ export const PROJECTS = [
     link: "https://lemueljansuico.vercel.app",
     id: 1,
     image: lemuel,
+    detailImage: lemuelDetail,
   }
 ];
 
@@ -105,7 +161,7 @@ export function Projects({ onViewDetails, onViewAllProjects }: { onViewDetails: 
               key={project.id}
               className="bg-white dark:bg-[#141419] border border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden flex flex-col group hover:-translate-y-1 hover:border-rose-300/80 dark:hover:border-rose-500/40 hover:shadow-[0_8px_24px_rgba(244,63,94,0.06)] transition-all duration-300"
             >
-              {/* Image Placeholder */}
+              {/* Image Header */}
               <div 
                 className="aspect-video w-full bg-slate-100 dark:bg-[#181820] relative overflow-hidden flex items-center justify-center border-b border-slate-200 dark:border-slate-800/80"
                 data-image={`project-${project.id}`}
@@ -133,7 +189,7 @@ export function Projects({ onViewDetails, onViewAllProjects }: { onViewDetails: 
 
                 <button 
                   onClick={() => onViewDetails(project.id)}
-                  className="inline-flex items-center text-sm font-semibold text-slate-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors mt-auto w-fit"
+                  className="inline-flex items-center text-sm font-semibold text-slate-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-400 transition-colors mt-auto w-fit cursor-pointer"
                 >
                   View Details
                   <span className="ml-1 opacity-70 group-hover:translate-x-1 transition-transform inline-block">
@@ -144,8 +200,6 @@ export function Projects({ onViewDetails, onViewAllProjects }: { onViewDetails: 
             </div>
           ))}
         </div>
-        
-
       </div>
     </section>
   );

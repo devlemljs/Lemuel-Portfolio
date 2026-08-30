@@ -1,10 +1,10 @@
 import { ArrowLeft, ExternalLink, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { PROJECTS, GRAPHICS_POSTERS } from './Projects';
+import { PROJECTS, GRAPHICS_POSTERS, PosterItem } from './Projects';
 
 export function ProjectDetails({ projectId, onBack }: { projectId: number; onBack: () => void }) {
   const project = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
-  const [selectedPoster, setSelectedPoster] = useState<{ id: number; title: string; category: string } | null>(null);
+  const [selectedPoster, setSelectedPoster] = useState<PosterItem | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -129,7 +129,7 @@ export function ProjectDetails({ projectId, onBack }: { projectId: number; onBac
         {/* Project Visual Display */}
         {isGraphicsDesign ? (
           <div className="mb-16">
-            {/* Infinite Right-to-Left Marquee Loop (Canva Concept Placeholders) */}
+            {/* Infinite Right-to-Left Marquee Loop */}
             <div className="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 rounded-2xl py-6 group shadow-xs">
               {/* Fade gradient edges */}
               <div className="absolute inset-y-0 left-0 w-12 sm:w-20 bg-gradient-to-r from-slate-50 dark:from-slate-850 to-transparent z-10 pointer-events-none" />
@@ -140,97 +140,108 @@ export function ProjectDetails({ projectId, onBack }: { projectId: number; onBac
                   <div 
                     key={index}
                     onClick={() => setSelectedPoster(poster)}
-                    className="h-56 sm:h-64 md:h-72 aspect-[2/3] shrink-0 mx-2 sm:mx-3 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-rose-500 dark:hover:border-rose-400 hover:bg-rose-50/20 dark:hover:bg-rose-950/20 flex flex-col items-center justify-center p-3 text-center transition-all duration-300 cursor-pointer shadow-xs hover:scale-105"
+                    className="h-56 sm:h-64 md:h-72 aspect-[2/3] shrink-0 mx-2 sm:mx-3 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900 cursor-pointer shadow-xs"
                   >
-                    <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 font-mono text-xs font-bold mb-2">
-                      #{poster.id}
-                    </div>
-                    <span className="text-slate-700 dark:text-slate-200 font-semibold text-xs sm:text-sm">
-                      {poster.title}
-                    </span>
-                    <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] mt-1">
-                      {poster.category}
-                    </span>
+                    <img 
+                      src={poster.image} 
+                      alt={poster.title} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Modal Lightbox for Enlarged Placeholder View on Click */}
+            {/* Modal Lightbox for Enlarged View on Click */}
             {selectedPoster && (
               <div 
                 className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4"
                 onClick={() => setSelectedPoster(null)}
               >
                 <div 
-                  className="relative h-[75vh] aspect-[2/3] rounded-2xl overflow-hidden bg-slate-900 border border-slate-700 shadow-2xl flex flex-col items-center justify-center p-8 text-center text-white"
+                  className="relative max-h-[85vh] max-w-[90vw] aspect-[2/3] rounded-2xl overflow-hidden bg-slate-900 border border-slate-700 shadow-2xl flex flex-col"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
                     onClick={() => setSelectedPoster(null)}
-                    className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 text-white border border-slate-600 flex items-center justify-center hover:bg-slate-700 transition-colors cursor-pointer z-10"
+                    className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/80 text-white border border-slate-600 flex items-center justify-center hover:bg-slate-800 transition-colors cursor-pointer z-10"
                     aria-label="Close preview"
                   >
                     <X className="w-4 h-4" />
                   </button>
 
-                  <div className="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 font-mono text-xl font-bold mb-4">
-                    #{selectedPoster.id}
-                  </div>
-                  <h3 className="text-xl font-bold mb-1">
-                    {selectedPoster.title}
-                  </h3>
-                  <p className="text-sm font-mono text-slate-400 mb-6">
-                    Category: {selectedPoster.category}
-                  </p>
-                  <div className="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 max-w-xs">
-                    Canva Graphic Design Concept Placeholder
-                  </div>
+                  <img 
+                    src={selectedPoster.image} 
+                    alt={selectedPoster.title} 
+                    className="w-full h-full object-contain"
+                  />
                 </div>
               </div>
             )}
           </div>
-        ) : project.title.toLowerCase().includes('internshipfy') ? (
+        ) : isInternshipfy ? (
           <div className="mb-12">
             <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-xl mx-auto">
               {/* Column 1 - Phone View */}
               <div 
-                className="w-full aspect-[9/16] bg-slate-100 dark:bg-slate-800/80 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden flex flex-col items-center justify-center p-4 text-center group hover:border-rose-300 dark:hover:border-rose-500/50 transition-colors"
+                className="w-full aspect-[9/16] bg-slate-100 dark:bg-slate-800/80 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden flex flex-col items-center justify-center"
                 data-image="internshipfy-preview-1"
               >
-                <div className="absolute top-2.5 w-10 h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
-                <div className="w-10 h-10 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg flex items-center justify-center mb-2">
-                  <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">1</span>
-                </div>
-                <span className="text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm">
-                  Screen 1
-                </span>
-                <span className="text-slate-400 dark:text-slate-500 text-[11px] font-mono mt-1">
-                  (Phone View)
-                </span>
+                {project.phonePreviews?.[0] ? (
+                  <img 
+                    src={project.phonePreviews[0]} 
+                    alt="Internshipfy Screen 1" 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <>
+                    <div className="absolute top-2.5 w-10 h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                    <div className="w-10 h-10 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">1</span>
+                    </div>
+                    <span className="text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm">
+                      Screen 1
+                    </span>
+                  </>
+                )}
               </div>
 
               {/* Column 2 - Phone View */}
               <div 
-                className="w-full aspect-[9/16] bg-slate-100 dark:bg-slate-800/80 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden flex flex-col items-center justify-center p-4 text-center group hover:border-rose-300 dark:hover:border-rose-500/50 transition-colors"
+                className="w-full aspect-[9/16] bg-slate-100 dark:bg-slate-800/80 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden flex flex-col items-center justify-center"
                 data-image="internshipfy-preview-2"
               >
-                <div className="absolute top-2.5 w-10 h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
-                <div className="w-10 h-10 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg flex items-center justify-center mb-2">
-                  <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">2</span>
-                </div>
-                <span className="text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm">
-                  Screen 2
-                </span>
-                <span className="text-slate-400 dark:text-slate-500 text-[11px] font-mono mt-1">
-                  (Phone View)
-                </span>
+                {project.phonePreviews?.[1] ? (
+                  <img 
+                    src={project.phonePreviews[1]} 
+                    alt="Internshipfy Screen 2" 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <>
+                    <div className="absolute top-2.5 w-10 h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                    <div className="w-10 h-10 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">2</span>
+                    </div>
+                    <span className="text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm">
+                      Screen 2
+                    </span>
+                  </>
+                )}
               </div>
             </div>
           </div>
         ) : (
-          <div className="w-full aspect-video bg-slate-100 dark:bg-slate-800 rounded-2xl mb-12 flex items-center justify-center border border-slate-200 dark:border-slate-700">
-             <span className="text-slate-400 dark:text-slate-500 font-medium">Project Preview Image</span>
+          <div className="w-full aspect-video bg-slate-100 dark:bg-slate-800 rounded-2xl mb-12 overflow-hidden flex items-center justify-center border border-slate-200 dark:border-slate-700">
+            {project.detailImage || project.image ? (
+              <img 
+                src={project.detailImage || project.image} 
+                alt={project.title} 
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span className="text-slate-400 dark:text-slate-500 font-medium">Project Preview Image</span>
+            )}
           </div>
         )}
 
